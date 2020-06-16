@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { UserModel } from '../models/user';
 import { loginModel } from '../models/login';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 
@@ -14,12 +13,12 @@ export class LoginService {
     console.log(user);
 
     const httpOptions = {
-      headers: new HttpHeaders({ 
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
         'Access-Control-Allow-Origin':'*',
-        
       })
     };
-    
-    return this.http.post('http://localhost/fuentes/Final-Web-1-master/backend/login.php',user,httpOptions);
+
+    return this.http.post('/backend/login.php',user,httpOptions);
   }
 }

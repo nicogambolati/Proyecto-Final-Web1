@@ -1,0 +1,7 @@
+{
+    "/backend": {
+        "target": "https://final-web-1.herokuapp.com",
+        "secure": "true",
+        "logLevel": "debug"
+    }
+}
