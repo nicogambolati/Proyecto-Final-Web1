@@ -1,0 +1,7 @@
+{
+    "/backend": {
+        "target": "http://localhost/fuentes/Final_Web_1-master",
+        "secure": "true",
+        "logLevel": "debug"
+    }
+}
