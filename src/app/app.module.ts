@@ -8,6 +8,7 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule} from '@angular/common/http';
+import { UploadComponent } from './upload/upload.component';
 
 
 
@@ -15,7 +16,8 @@ import { HttpClientModule} from '@angular/common/http';
   declarations: [
     AppComponent,
     LoginComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    UploadComponent
   ],
   imports: [
     BrowserModule,
