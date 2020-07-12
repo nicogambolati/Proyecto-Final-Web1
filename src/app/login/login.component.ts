@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormControl, Validators} from "@angular/forms";
 import { loginModel } from '../models/login';
 import { LoginService } from '../services/login.service';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -16,14 +17,16 @@ export class LoginComponent implements OnInit {
       password: new FormControl("", [Validators.required,Validators.minLength(3)])
     })
 
-  constructor(private loginService: LoginService) { }
+  constructor(
+    private loginService: LoginService,
+    private authService: AuthenticationService
+  ) { }
 
   ngOnInit() {
   }
 
-  onSubmit()
-  {
-    if(this.loginUserForm.invalid){
+  onSubmit() {
+    if (this.loginUserForm.invalid) {
       console.log("formulario es incorrecto");
 
     } else{
@@ -31,7 +34,10 @@ export class LoginComponent implements OnInit {
       login.email = this.loginUserForm.value.email;
       login.password = this.loginUserForm.value.password;
       
-      this.loginService.loginUser(login).subscribe(Response=>console.log(Response));
+      this.loginService.loginUser(login).subscribe(response => {
+        this.authService.setAuth(response.userId)
+        // console.log(response);
+      });
     }
   }
 
