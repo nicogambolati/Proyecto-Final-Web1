@@ -17,7 +17,7 @@ export class UserService {
       })
     };
 
-    console.log("usuario: ", user);
+    // console.log("usuario: ", user);
     
     return this.http.post('/backend/newuser.php', user, httpOptions);
   }

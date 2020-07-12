@@ -15,8 +15,14 @@ if (!empty($data->email) && !empty($data->password)){
     $results = executeQuery($sql);
 
     if ($results && $results->num_rows > 0) {
+        $row = mysqli_fetch_assoc($results);
+
         http_response_code(201);
-        echo json_encode(array("message" => "Log in success: " . $results->num_rows));
+        echo json_encode(array(
+            "message" => "Log in success: " . $results->num_rows,
+            "userId" => $row["id"],
+            "fullName" => $row["name"] // . ' ' . $row["lastname"]
+        ));
     } else {
         http_response_code(400);
         echo json_encode(array("message" => "Log in failed: " /*. $results->num_rows*/));
@@ -26,9 +32,6 @@ if (!empty($data->email) && !empty($data->password)){
 
     echo json_encode(array("message" => "Please provide user email and password."));
 }
-
-
-
 
 ?>
 
