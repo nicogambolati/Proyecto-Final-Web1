@@ -9,7 +9,7 @@ $upload_dir = 'uploads/';
 $server_url = 'http://127.0.0.1:8000';
 
 // echo $_POST["description"];
-// echo $_POST["userId"];
+// echo $_POST["userId"
 
 if ($_FILES['file'] && $_POST["description"] && $_POST["userId"]) {
     $file_name = $_FILES["file"]["name"];

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UploadService } from '../services/upload.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UploadFileModel } from '../models/uploadFile';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-upload',
@@ -16,15 +17,24 @@ export class UploadComponent implements OnInit {
       file : new FormControl("", Validators.required),
     })
 
-  constructor(private uploadService: UploadService) { }
+  constructor(private uploadService: UploadService, private http: HttpClient) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
-    const fileData = new UploadFileModel();
-    fileData.description = this.uploadFileForm.get('description').value;
+    const formData = new FormData();
+    formData.append('file', this.uploadFileForm.get('file').value);
+    formData.append('description', this.uploadFileForm.get('description').value);
+    formData.append('userId', "5");
 
-    this.uploadService.uploadFile(fileData).subscribe(result => console.log("result", result));
+    this.http.post('/backend/uploadFile.php', formData).subscribe(result => console.log("Result", result));
+  }
+
+  onFileSelect(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.uploadFileForm.get('file').setValue(file);
+    }
   }
 }

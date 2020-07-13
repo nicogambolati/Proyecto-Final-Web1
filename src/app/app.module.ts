@@ -15,13 +15,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { UploadedFileComponent } from './uploaded-file/uploaded-file.component';
+import { MatCardModule } from '@angular/material/card';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     CreateUserComponent,
-    UploadComponent
+    UploadComponent,
+    DashboardComponent,
+    UploadedFileComponent,
+   
+
   ],
   imports: [
     BrowserModule,
@@ -33,7 +42,8 @@ import { MatButtonModule } from '@angular/material/button';
     // Material UI
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

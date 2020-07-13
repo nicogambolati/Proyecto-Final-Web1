@@ -1,6 +1,20 @@
-
 <h1>Subir Imagen</h1>
-<div>
+
+    <form [formGroup]="uploadFileForm" (ngSubmit)="onSubmit()">      
+        <div>
+          <input type="file" name="file" (change)="onFileSelect($event)" accept="image/png, image/jpeg, image/jpg"/>
+        </div>
+
+        <div>
+            <textarea formControlName="description" rows="10" cols="40" placeholder="Escribe aquí tu comentario"></textarea>
+        </div>
+
+        <div>
+          <button type="submit">Upload</button>
+        </div>
+      </form>
+
+<!-- <div>
     <input name="imagen" type="file" accept="image/png, image/jpeg, image/jpg" >
 </div>   
 <div>
@@ -9,4 +23,4 @@
     
 <button type="submit">Aceptar</button>
 <button>Cancelar</button>
-
+ -->
