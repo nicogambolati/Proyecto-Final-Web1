@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import { UploadComponent } from './upload/upload.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CookieService } from 'ngx-cookie-service';
 
 // Material
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -38,6 +39,7 @@ import { MatCardModule } from '@angular/material/card';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    CookieService,
 
     // Material UI
     MatFormFieldModule,
