@@ -39,7 +39,7 @@ import { MatCardModule } from '@angular/material/card';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    CookieService,
+    // CookieService,
 
     // Material UI
     MatFormFieldModule,
