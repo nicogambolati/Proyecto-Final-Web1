@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { UploadComponent } from './upload/upload.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,11 @@ const routes: Routes = [
   {
     path:"upload",
     component: UploadComponent
+  },
+
+  {
+    path:"dashboard",
+    component: DashboardComponent
   }
 
 
