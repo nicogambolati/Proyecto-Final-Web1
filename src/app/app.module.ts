@@ -19,6 +19,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UploadedFileComponent } from './uploaded-file/uploaded-file.component';
 import { MatCardModule } from '@angular/material/card';
+import { AdminComponent } from './admin/admin.component';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -30,6 +32,7 @@ import { MatCardModule } from '@angular/material/card';
     UploadComponent,
     DashboardComponent,
     UploadedFileComponent,
+    AdminComponent,
    
 
   ],
@@ -45,7 +48,8 @@ import { MatCardModule } from '@angular/material/card';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

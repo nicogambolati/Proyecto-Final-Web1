@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { UploadComponent } from './upload/upload.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 const routes: Routes = [
@@ -27,7 +28,12 @@ const routes: Routes = [
   {
     path:"dashboard",
     component: DashboardComponent
-  }
+  },
+
+{
+  path:"admin",
+  component: AdminComponent
+}
 
 
 ];
