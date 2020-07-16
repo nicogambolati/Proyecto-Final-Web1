@@ -10,7 +10,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import { UploadComponent } from './upload/upload.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CookieService } from 'ngx-cookie-service';
 
 // Material
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -19,8 +18,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UploadedFileComponent } from './uploaded-file/uploaded-file.component';
 import { MatCardModule } from '@angular/material/card';
-
-
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -30,8 +31,6 @@ import { MatCardModule } from '@angular/material/card';
     UploadComponent,
     DashboardComponent,
     UploadedFileComponent,
-   
-
   ],
   imports: [
     BrowserModule,
@@ -39,13 +38,16 @@ import { MatCardModule } from '@angular/material/card';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    // CookieService,
 
     // Material UI
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]
