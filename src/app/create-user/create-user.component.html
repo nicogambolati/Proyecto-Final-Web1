@@ -1,52 +1,53 @@
+<form
+  (ngSubmit)="onSubmit()"
+  [formGroup]="createUserForm"
+  class="center-content"
+>
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Nombre</mat-label>
+    <input matInput type="text" formControlName="name" required />
 
-<form (ngSubmit)="onSubmit()" [formGroup]="createUserForm">
-    <div>
-        <label> Nombre</label>
-        <input  type="text" formControlName="name"  required>  
-        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
-          <div *ngIf="name.errors.required">
-            Name is required.
-          </div>
-        </div>
-    </div>
-    
-      <div>
-        <label> Apellido</label>
-        <input type="text" formControlName="lastName" required>
-        <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger">
-          <div *ngIf="lastName.errors.required">
-            Last name is required.
-          </div>
-        </div>
-      </div>
-    
-      <div>
-        <label> Email</label>
-        <input type="email" formControlName="email" required>
-        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
-          <div *ngIf="email.errors.required">
-            Email is required.
-          </div>
-          <div *ngIf="email.errors.email">
-            Is not a valid email address.
-          </div>
-        </div>
-      </div>
-    
-      <div>
-        <label> Contraseña</label>
-        <input type="password" formControlName="password" required>
-        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
-          <div *ngIf="password.errors.required">
-            Password is required.
-          </div>
-          <div *ngIf="password.errors.minlength">
-            Password should be greater than 3 characters.
-          </div>
-        </div>
-      </div>
-    
-      <button type="submit">Aceptar</button> 
-      <button>Cancelar</button>
+    <mat-error *ngIf="name.errors.required">
+      Name is <strong>required</strong>.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Apellido</mat-label>
+    <input matInput type="text" formControlName="lastName" required />
+
+    <mat-error *ngIf="lastName.errors.required">
+      Last name is <strong>required</strong>.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Email</mat-label>
+    <input matInput type="email" formControlName="email" required />
+    <input
+      matInput
+      formControlName="email"
+      placeholder="Ex. pat@example.com"
+      required
+    />
+
+    <mat-error *ngIf="email.errors.required">
+      Email is <strong>required</strong>.
+    </mat-error>
+    <mat-error *ngIf="email.errors.email">
+      Please enter a valid email address.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Password</mat-label>
+    <input matInput type="password" formControlName="password" required />
+
+    <mat-error *ngIf="password.errors.required">
+      Password is <strong>required</strong>.
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Aceptar</button>
+  <button mat-raised-button>Cancelar</button>
 </form>
-
