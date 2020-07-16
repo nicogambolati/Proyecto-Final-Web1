@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit()" [formGroup]="loginUserForm" class="login-form">
+<form (ngSubmit)="onSubmit()" [formGroup]="loginUserForm" class="login-form center-content">
   <mat-form-field appearance="outline" class="example-full-width">
     <mat-label>Email</mat-label>
     <input 
@@ -18,10 +18,10 @@
 
   <mat-form-field appearance="outline" class="example-full-width">
     <mat-label>Password</mat-label>
-    <input matInput formControlName="password" required />
+    <input matInput type="password" formControlName="password" required />
 
     <mat-error *ngIf="password.errors.required">
-      Email is <strong>required</strong>.
+      Password is <strong>required</strong>.
     </mat-error>
   </mat-form-field>
 
