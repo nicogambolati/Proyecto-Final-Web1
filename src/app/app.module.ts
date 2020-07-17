@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { AdminComponent } from './admin/admin.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule} from '@angular/common/http';
@@ -18,10 +19,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UploadedFileComponent } from './uploaded-file/uploaded-file.component';
 import { MatCardModule } from '@angular/material/card';
-import { AdminComponent } from './admin/admin.component';
-import {MatTableModule} from '@angular/material/table';
-
-
+import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -32,8 +34,6 @@ import {MatTableModule} from '@angular/material/table';
     DashboardComponent,
     UploadedFileComponent,
     AdminComponent,
-   
-
   ],
   imports: [
     BrowserModule,
@@ -47,7 +47,12 @@ import {MatTableModule} from '@angular/material/table';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    MatTableModule
+    MatTableModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule,
+    MatSidenavModule    
   ],
   providers: [],
   bootstrap: [AppComponent]
