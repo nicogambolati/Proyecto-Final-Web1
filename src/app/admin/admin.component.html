@@ -2,25 +2,33 @@
   
   <ng-container matColumnDef="id">
     <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
   </ng-container>
 
   
   <ng-container matColumnDef="name">
-    <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef> NOMBRE </mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
   </ng-container>
 
   
   <ng-container matColumnDef="lastName">
-    <mat-header-cell *matHeaderCellDef> Apellido </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+    <mat-header-cell *matHeaderCellDef> APELLIDO </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
   </ng-container>
 
   
   <ng-container matColumnDef="email">
-    <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+    <mat-header-cell *matHeaderCellDef> EMAIL </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell  *matHeaderCellDef > Actions </mat-header-cell>
+    <mat-cell *matCellDef="let row" >
+         <button *ngIf="row.isActive == true" mat-button color="warn" (click)="disableUser(row.id)">Deshabilitar</button>
+         <button *ngIf="row.isActive == false" mat-button  color="primary" (click)="enableUser(row.id)">Habilitar</button>
+    </mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

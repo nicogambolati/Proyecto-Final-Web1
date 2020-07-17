@@ -35,7 +35,8 @@ export class LoginComponent implements OnInit {
       login.password = this.loginUserForm.value.password;
       
       this.loginService.loginUser(login).subscribe(response => {
-        // this.authService.setAuth(response.userId)
+        const user = (response as Loggeduser);
+        this.authService.setAuth(user.userId.toString());
         console.log(response);
       });
     }
@@ -49,4 +50,9 @@ export class LoginComponent implements OnInit {
     return this.loginUserForm.get('password');
   }
  
+}
+
+interface Loggeduser {
+  userId: Number,
+  fullName: String
 }

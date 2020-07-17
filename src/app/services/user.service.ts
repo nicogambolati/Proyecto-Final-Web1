@@ -21,6 +21,33 @@ export class UserService {
     
     return this.http.post('/backend/newuser.php', user, httpOptions);
   }
+
+  getUsers(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin':'*',
+      })
+    };
+
+    return this.http.get('/backend/getUser.php');
+  }
+
+  changeUserActive(userId: Number, isActive: Boolean) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin':'*',
+      })
+    };
+
+    const body = {
+      userId,
+      isActive: isActive ? '1' : '0'
+    };
+
+    return this.http.post('/backend/disableUser.php', body, httpOptions);
+  }
 }
 
 

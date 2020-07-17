@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services/user.service';
 
 
 @Component({
@@ -9,31 +10,42 @@ import { Component, OnInit } from '@angular/core';
 
 
 export class AdminComponent implements OnInit {
+  displayedColumns: string[] = ['id', 'name', 'lastName', 'email', 'actions'];// las columnas que va a mostrar en la tabla
+  dataSource: UserElement[]; 
 
-  constructor() { }
-  
+  constructor(private userService: UserService) { }
+
+  refreshUsers() {
+    this.userService.getUsers().subscribe(result =>{
+      this.dataSource = (result as object[]).map(user => (user as UserElement));
+    });
+  }
 
   ngOnInit() {
+    this.refreshUsers();
+  }
+
+  disableUser(id){
+    // console.log(id);
+    this.userService.changeUserActive(id, false).subscribe(() => this.refreshUsers());
+  }
+
+  enableUser(id) {
+    this.userService.changeUserActive(id, true).subscribe(() => this.refreshUsers());
   }
 }
 
-// export interface PeriodicElement {
-//   id: number;
-//   name: string;
-//   lastName: string;
-//   email: string;
-// }
+export interface UserElement {
+  id: number;
+  name: string;
+  lastName: string;
+  email: string;
+  isActive: boolean;
+}
 
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   {id: 1, name: 'Nicolas', lastName: "gambo", email: 'lalalalla@hotmail.com'},
-//   {id: 2, name: 'Sebastian', lastName: "gambolati", email: 'heheheh@gmail.com'},
-//   {id: 3, name: 'Marcela', lastName: "lalala", email: 'kekekeke@yahoo.com'},
-// ];
 
-// export class TableBasicFlexExample {
-//   displayedColumns: string[] = ['id', 'name', 'lastName', 'email'];
-//   dataSource = ELEMENT_DATA;
-// }
+
+
 
 
 
