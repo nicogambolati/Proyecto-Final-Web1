@@ -46,7 +46,10 @@ export class LoginComponent implements OnInit {
         this.router.navigate(["/dashboard"]);
       });
     }
-  } 
+  }
+
+  get email() { return this.loginUserForm.get('email'); }
+  get password() { return this.loginUserForm.get('password'); }
 }
 
 interface Loggeduser {
