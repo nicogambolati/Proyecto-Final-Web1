@@ -1,18 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup,FormControl, Validators, FormGroupDirective, NgForm} from "@angular/forms";
+import { FormGroup,FormControl, Validators } from "@angular/forms";
 import { loginModel } from '../models/login';
 import { LoginService } from '../services/login.service';
 import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
-import { ErrorStateMatcher } from '@angular/material/core';
-
-/** Error when invalid control is dirty, touched, or submitted. */
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
 
 @Component({
   selector: 'app-login',
@@ -26,7 +17,6 @@ export class LoginComponent implements OnInit {
       email: new FormControl("", [Validators.required,Validators.email]),
       password: new FormControl("", [Validators.required,Validators.minLength(3)])
     });
-  matcher = new MyErrorStateMatcher();
 
   constructor(
     private loginService: LoginService,
@@ -56,16 +46,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(["/dashboard"]);
       });
     }
-  }
-
-  get email() {
-    return this.loginUserForm.get('email');
-  }
-
-  get password() {
-    return this.loginUserForm.get('password');
-  }
- 
+  } 
 }
 
 interface Loggeduser {
