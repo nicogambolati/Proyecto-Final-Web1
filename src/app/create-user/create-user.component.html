@@ -7,8 +7,8 @@
     <mat-label>Nombre</mat-label>
     <input matInput type="text" formControlName="name" required />
 
-    <mat-error *ngIf="name.errors.required">
-      Name is <strong>required</strong>.
+    <mat-error *ngIf="name.hasError('required')">
+      El campo <strong>Nombre</strong> es requerido.
     </mat-error>
   </mat-form-field>
 
@@ -16,7 +16,7 @@
     <mat-label>Apellido</mat-label>
     <input matInput type="text" formControlName="lastName" required />
 
-    <mat-error *ngIf="lastName.errors.required">
+    <mat-error *ngIf="lastName.hasError('required')">
       Last name is <strong>required</strong>.
     </mat-error>
   </mat-form-field>
@@ -31,11 +31,12 @@
       required
     />
 
-    <mat-error *ngIf="email.errors.required">
-      Email is <strong>required</strong>.
+    <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+      Ingrese un email válido.
     </mat-error>
-    <mat-error *ngIf="email.errors.email">
-      Please enter a valid email address.
+
+    <mat-error *ngIf="email.hasError('required')">
+      El campo <strong>Email</strong> es requerido.
     </mat-error>
   </mat-form-field>
 
@@ -43,11 +44,11 @@
     <mat-label>Password</mat-label>
     <input matInput type="password" formControlName="password" required />
 
-    <mat-error *ngIf="password.errors.required">
+    <mat-error *ngIf="password.hasError('required')">
       Password is <strong>required</strong>.
     </mat-error>
   </mat-form-field>
 
   <button mat-raised-button color="primary" type="submit">Aceptar</button>
-  <button mat-raised-button>Cancelar</button>
+  <button mat-raised-button type="button" (click)="onCancel($event)">Cancelar</button>
 </form>

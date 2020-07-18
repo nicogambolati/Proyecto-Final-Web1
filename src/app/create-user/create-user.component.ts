@@ -27,7 +27,11 @@ export class CreateUserComponent implements OnInit {
   constructor (
     private userService: UserService,
     private router: Router
-  ) {} 
+  ) {}
+
+  onCancel() {
+    this.router.navigate(["/home"]);
+  }  
 
   onSubmit() {
     if (this.createUserForm.invalid) {
@@ -42,8 +46,8 @@ export class CreateUserComponent implements OnInit {
         .subscribe(response => {
           console.log(response);
           if (response) {
+            // TODO: Save cookie and redirect to Dashboard.
             this.router.navigate(['login']);
-            // 
           } else {
             console.error("No tenemos respuesta.");
           }
@@ -51,20 +55,8 @@ export class CreateUserComponent implements OnInit {
     }
   }
 
-
-  get name() {
-    return this.createUserForm.get('name');
-  }
-
-  get lastName() {
-    return this.createUserForm.get('lastName');
-  }
-
-  get email() {
-    return this.createUserForm.get('email');
-  }
-
-  get password() {
-    return this.createUserForm.get('password');
-  }
+  get name() { return this.createUserForm.get('name'); }
+  get lastName() { return this.createUserForm.get('lastName'); }
+  get email() { return this.createUserForm.get('email'); }
+  get password() { return this.createUserForm.get('password'); }
 }
