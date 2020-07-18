@@ -1,26 +1,15 @@
 <h1>Subir Imagen</h1>
+<form [formGroup]="uploadFileForm" (ngSubmit)="onSubmit()" class="center-content">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>File</mat-label>
+      <input type="file" name="file" (change)="onFileSelect($event)" accept="image/png, image/jpeg, image/jpg" required />
+    </mat-form-field>
 
-    <form [formGroup]="uploadFileForm" (ngSubmit)="onSubmit()">      
-        <div>
-          <input type="file" name="file" (change)="onFileSelect($event)" accept="image/png, image/jpeg, image/jpg"/>
-        </div>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput formControlName="description" rows="10" cols="40" placeholder="Escribe aquí tu comentario"></textarea>
+    </mat-form-field>
 
-        <div>
-            <textarea formControlName="description" rows="10" cols="40" placeholder="Escribe aquí tu comentario"></textarea>
-        </div>
-
-        <div>
-          <button type="submit">Upload</button>
-        </div>
-      </form>
-
-<!-- <div>
-    <input name="imagen" type="file" accept="image/png, image/jpeg, image/jpg" >
-</div>   
-<div>
-    <textarea name="comentarios" rows="10" cols="40" placeholder="Escribe aquí tu comentario"></textarea>
-</div>
-    
-<button type="submit">Aceptar</button>
-<button>Cancelar</button>
- -->
+    <button mat-raised-button color="primary" type="submit">Aceptar</button>
+    <button mat-raised-button>Cancelar</button>
+</form>

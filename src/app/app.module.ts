@@ -1,16 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { AdminComponent } from './admin/admin.component';
-import { ReactiveFormsModule } from '@angular/forms';
-
-import { HttpClientModule} from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
 import { UploadComponent } from './upload/upload.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Material
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -24,7 +24,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { HomeComponent } from './home/home.component';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -54,7 +54,8 @@ import { HomeComponent } from './home/home.component';
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
-    MatSidenavModule    
+    MatSidenavModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
