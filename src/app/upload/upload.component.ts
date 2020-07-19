@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UploadFileModel } from '../models/uploadFile';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-upload',
@@ -24,7 +25,8 @@ export class UploadComponent implements OnInit {
   constructor(
     private uploadService: UploadService, 
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private authService: AuthenticationService,
   ) { }
 
   ngOnInit() {
@@ -34,8 +36,8 @@ export class UploadComponent implements OnInit {
     const formData = new FormData();
     formData.append('file', this.uploadFileForm.get('file').value);
     formData.append('description', this.uploadFileForm.get('description').value);
-    formData.append('userId', "5"); // TODO: Tomar userId de la cookie.
-
+    formData.append('userId', this.authService.getAuth());
+    
     this.http.post('/backend/uploadFile.php', formData)
       // TODO: Redirect al dashboard?
       .subscribe(result => console.log("Result", result));
