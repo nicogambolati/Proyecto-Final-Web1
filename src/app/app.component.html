@@ -303,9 +303,15 @@
         <mat-icon>menu</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>
+       <a routerLink="/login">
+        <button mat-menu-item >
+        <mat-icon>input</mat-icon>
+        <span>Login</span>
+        </button>
+      </a> 
+        <button mat-menu-item (click)="confirmLogout()">
           <mat-icon>input</mat-icon>
-          <span>Login</span>
+          <span>Logout</span>
         </button>
       </mat-menu>
 
