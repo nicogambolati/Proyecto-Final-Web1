@@ -16,4 +16,8 @@ export class AuthenticationService {
   getAuth(): string {
     return this.cookieService.get(COOKIE_NAME);
   }
+
+  deleteAuth(){
+    this.cookieService.delete(COOKIE_NAME);
+  }
 }

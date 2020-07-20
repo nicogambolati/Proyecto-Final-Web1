@@ -17,6 +17,9 @@ const routes: Routes = [
   },
   {
     path:"create-user",
+    data: {
+      title: "Nuevo Usuario"
+    },
     component: CreateUserComponent
   },
   {

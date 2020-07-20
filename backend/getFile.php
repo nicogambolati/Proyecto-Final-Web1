@@ -11,8 +11,10 @@ $data = json_decode(file_get_contents("php://input"));
 $sql = "SELECT uploadedfiles.description, uploadedfiles.url, uploadedfiles.id, Usuarios.name
     FROM uploadedfiles
     INNER JOIN Usuarios ON 
-    uploadedfiles.userId = Usuarios.Id"
-; // Traer los archivos del usuario activo.
+    uploadedfiles.userId = Usuarios.Id 
+    ORDER BY createdDate desc";
+
+// Traer los archivos del usuario activo.
 $results = executeQuery($sql); // guardo el resultado de la consulta en un variable
 
 

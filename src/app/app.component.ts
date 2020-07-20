@@ -22,5 +22,18 @@ export class AppComponent {
       }
     });
   }
+  confirmLogout(){
+    console.log("logout");
+   
+      const dialogRef = this.dialog.open(DialogContentExampleDialog);
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);
+      });
+    }
+  
+  }
+
+
 
 }
