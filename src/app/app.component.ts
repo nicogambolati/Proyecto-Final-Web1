@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, RoutesRecognized } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { AuthenticationService } from './services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -11,29 +14,29 @@ export class AppComponent {
   pageTitle = '';
 
   constructor (
-    private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog,
+    private authService: AuthenticationService,
   ) { 
     router.events.subscribe(event => {
       if (event instanceof RoutesRecognized) {
         const route = event.state.root.firstChild;
         this.pageTitle = route.data.title || '';
-        console.log('Page', route.data.title);
       }
     });
   }
-  confirmLogout(){
-    console.log("logout");
-   
-      const dialogRef = this.dialog.open(DialogContentExampleDialog);
-  
-      dialogRef.afterClosed().subscribe(result => {
-        console.log(`Dialog result: ${result}`);
-      });
-    }
-  
+
+  openDialog() {
+    this.dialog
+    .open(ConfirmDialogComponent, {
+      data: '¿Está seguro que desea cerrar sesión?'
+    }).afterClosed()
+    .subscribe((accepted: Boolean) => {
+      if (accepted) {
+        this.authService.deleteAuth();
+        this.router.navigate(['/home']);
+      }
+    });
   }
-
-
 
 }
