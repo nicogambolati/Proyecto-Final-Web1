@@ -26,7 +26,7 @@ export class AppComponent {
     });
   }
 
-  openDialog() {
+  confirmLogout() {
     this.dialog
     .open(ConfirmDialogComponent, {
       data: '¿Está seguro que desea cerrar sesión?'
