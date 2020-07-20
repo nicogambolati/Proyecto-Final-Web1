@@ -6,6 +6,7 @@ import { UploadComponent } from './upload/upload.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
+import { LoggedUserGuard } from './guards/logged-user.guard';
 
 const routes: Routes = [
   {
@@ -13,7 +14,7 @@ const routes: Routes = [
     data: {
       title: "Login"
     },
-    component:LoginComponent 
+    component:LoginComponent
   },
   {
     path:"create-user",
@@ -24,15 +25,18 @@ const routes: Routes = [
   },
   {
     path:"upload",
-    component: UploadComponent
+    component: UploadComponent,
+    canActivate: [LoggedUserGuard]
   },
   {
     path:"dashboard",
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [LoggedUserGuard]
   },
   {
     path:"admin",
-    component: AdminComponent
+    component: AdminComponent,
+    canActivate: [LoggedUserGuard] // Needs to check if user is Adminstrator.
   },
   {
     path: '',
