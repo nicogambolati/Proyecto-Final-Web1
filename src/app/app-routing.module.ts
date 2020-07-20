@@ -25,6 +25,9 @@ const routes: Routes = [
   },
   {
     path:"upload",
+    data: {
+      title: "Subir Imagen"
+    },
     component: UploadComponent,
     canActivate: [LoggedUserGuard]
   },
@@ -35,6 +38,9 @@ const routes: Routes = [
   },
   {
     path:"admin",
+    data: {
+      title: "Administrador"
+    },
     component: AdminComponent,
     canActivate: [LoggedUserGuard] // Needs to check if user is Adminstrator.
   },

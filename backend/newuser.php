@@ -8,8 +8,8 @@ $data = json_decode(file_get_contents("php://input"));
 
 // TODO: Validar los otros datos.
 if (!empty($data->name) && !empty($data->email) && !empty($data->password)) {
-    $sql = "INSERT INTO USUARIOS (name, email, password) 
-            VALUES ('$data->name', '$data->email', '$data->password')";
+    $sql = "INSERT INTO USUARIOS (name,lastName, email, password) 
+            VALUES ('$data->name','$data->lastName', '$data->email', '$data->password')";
 
     if (executeQuery($sql) === TRUE) {
         http_response_code(201);
@@ -20,5 +20,5 @@ if (!empty($data->name) && !empty($data->email) && !empty($data->password)) {
     }
 } else {
     http_response_code(400);
-    echo json_encode(array("message" => "Please specify User data. n: $data->name e: $data->email P: $data->password"));
+    echo json_encode(array("message" => "Please specify User data. n: $data->name ln: $data->lastName e: $data->email P: $data->password"));
 }

@@ -3,5 +3,6 @@ export class DashboardModel {
     description: string;
     url: string;
     name: string;
+    lastName: string;
     createdDate : Date;
 }

@@ -8,7 +8,7 @@ enableCORS();
 $data = json_decode(file_get_contents("php://input"));
 
 // Connected to DB
-$sql = "SELECT uploadedfiles.description, uploadedfiles.url, uploadedfiles.id, Usuarios.name,  uploadedfiles.createdDate
+$sql = "SELECT uploadedfiles.description, uploadedfiles.url, uploadedfiles.id, Usuarios.name,  uploadedfiles.createdDate, Usuarios.lastName
     FROM uploadedfiles
     INNER JOIN Usuarios ON 
     uploadedfiles.userId = Usuarios.Id 
