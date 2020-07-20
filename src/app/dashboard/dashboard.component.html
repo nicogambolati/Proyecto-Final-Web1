@@ -3,7 +3,7 @@
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
           <mat-card-title>{{file.name}}</mat-card-title>
-          <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+           <mat-card-subtitle>{{file.createdDate}}</mat-card-subtitle> 
         </mat-card-header>
         <img mat-card-image src="{{ '/backend/' + file.url}}" alt="Photo of a Shiba Inu">
         <mat-card-content>
