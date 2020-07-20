@@ -11,6 +11,7 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
 import { UploadComponent } from './upload/upload.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 // Material
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -25,6 +26,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { MatDividerModule } from '@angular/material/divider';
     UploadedFileComponent,
     AdminComponent,
     HomeComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,8 @@ import { MatDividerModule } from '@angular/material/divider';
     MatIconModule,
     MatMenuModule,
     MatSidenavModule,
-    MatDividerModule
+    MatDividerModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
