@@ -19,4 +19,9 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+
+  sendComment(id, comment) {
+
+    console.log("ID: ", id, comment);
+  }
 }

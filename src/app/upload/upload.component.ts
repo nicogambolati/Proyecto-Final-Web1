@@ -40,8 +40,8 @@ export class UploadComponent implements OnInit {
     
     this.http.post('/backend/uploadFile.php', formData)
       // TODO: Redirect al dashboard?
-      .subscribe(result => console.log("Result", result));
-     //this.router.navigate(["/dashboard"]);
+      .subscribe(result => this.router.navigate(["/dashboard"]));
+     
   }
 
   onCancel() {

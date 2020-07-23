@@ -15,8 +15,11 @@
           <button mat-button>LIKE</button>
          
         </mat-card-actions>
-        <!-- <mat-card-content>
-          <textarea matInput formControlName="description" rows="5" cols="40" placeholder="Escribe aquí tu comentario"></textarea>
-        </mat-card-content> -->
+         <mat-card-footer>
+           <div>            
+             <textarea id="{{ 'comment_' + file.id }}" rows="10" cols="40" ngMode></textarea>
+             <button (click)="sendComment(file.id)">Enviar</button>
+           </div>
+        </mat-card-footer> 
       </mat-card>
 </div>

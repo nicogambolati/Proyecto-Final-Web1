@@ -5,4 +5,5 @@ export class DashboardModel {
     name: string;
     lastName: string;
     createdDate : Date;
+    newComment: String
 }
