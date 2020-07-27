@@ -1,9 +1,9 @@
-<div *ngFor="let file of files">
+<div *ngFor="let file of files; let i = index;" formArrayName="commentsFormArray">
     <mat-card class="example-card">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
           <mat-card-title>{{file.name}} {{file.lastName}}</mat-card-title>
-           <mat-card-subtitle>{{file.createdDate}}</mat-card-subtitle> 
+          <mat-card-subtitle>{{file.createdDate}}</mat-card-subtitle> 
         </mat-card-header>
         <img mat-card-image src="{{ '/backend/' + file.url}}" alt="Photo of a Shiba Inu">
         <mat-card-content>
@@ -12,14 +12,17 @@
           </p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button>LIKE</button>
-         
+          <button mat-button (click)="likesCont(file)">LIKE ( {{file.likes}} )</button>
+        
         </mat-card-actions>
-         <mat-card-footer>
-           <div>            
-             <textarea id="{{ 'comment_' + file.id }}" rows="10" cols="40" ngMode></textarea>
-             <button (click)="sendComment(file.id)">Enviar</button>
-           </div>
+        <mat-card-footer>
+
+            <div [formGroupName]="i">
+              <input type="text" formControlName="comment"  name="description" />
+              <!-- <textarea id="newComment" rows="10" cols="40" ([ngModel])="comment"></textarea> -->
+              <button (click)="sendComment(file)">Enviar</button>
+            </div>
+          
         </mat-card-footer> 
       </mat-card>
 </div>

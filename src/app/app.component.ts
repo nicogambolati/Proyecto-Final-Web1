@@ -10,8 +10,9 @@ import { AuthenticationService } from './services/authentication.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'finalweb1';
+  title = 'XDXDXD';
   pageTitle = '';
+  isUserLogged: boolean;
 
   constructor (
     private router: Router,
@@ -22,6 +23,8 @@ export class AppComponent {
       if (event instanceof RoutesRecognized) {
         const route = event.state.root.firstChild;
         this.pageTitle = route.data.title || '';
+
+        this.isUserLogged = !!this.authService.getAuth();
       }
     });
   }
@@ -34,7 +37,7 @@ export class AppComponent {
     .subscribe((accepted: Boolean) => {
       if (accepted) {
         this.authService.deleteAuth();
-        this.router.navigate(['/home']);
+        this.router.navigate(['/login']);
       }
     });
   }

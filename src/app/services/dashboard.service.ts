@@ -10,7 +10,11 @@ export class DashboardService {
   constructor(private http:HttpClient) { }
 
   getUploadFiles () {
+    return this.http.get('/backend/getFile.php');
+  }
 
+  updateLikes (fileId){
+      
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -18,6 +22,6 @@ export class DashboardService {
       })
     };
 
-    return this.http.get('/backend/getFile.php');
+    return this.http.post('/backend/buttonLikes.php', {id : fileId}, httpOptions);
   }
 }

@@ -27,6 +27,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ProfileUserComponent } from './profile-user/profile-user.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     AdminComponent,
     HomeComponent,
     ConfirmDialogComponent,
+    ProfileUserComponent,
   ],
   imports: [
     BrowserModule,

@@ -303,25 +303,37 @@
         <mat-icon>menu</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-       <a routerLink="/login">
+       <a routerLink="/login" *ngIf="!isUserLogged" >
         <button mat-menu-item >
         <mat-icon>input</mat-icon>
         <span>Login</span>
         </button>
-      </a> 
-        <button mat-menu-item (click)="confirmLogout()">
-          <mat-icon>input</mat-icon>
-          <span>Logout</span>
-        </button>
-        <a routerLink="/upload">
+      </a>
+
+        <a routerLink="/upload" *ngIf="isUserLogged">
           <button mat-menu-item >
             <mat-icon>input</mat-icon>
             <span>Subir Imagen</span>
           </button>
         </a>
+        <a routerLink="/profile-user" *ngIf="isUserLogged">
+          <button mat-menu-item >
+            <mat-icon>input</mat-icon>
+            <span>Perfil de Usuario</span>
+          </button>
+        </a>
+
+        <button mat-menu-item (click)="confirmLogout()" *ngIf="isUserLogged">
+          <mat-icon>input</mat-icon>
+          <span>Logout</span>
+        </button>
       </mat-menu>
 
-      <a routerLink="home" class="logo">
+      
+      <a routerLink="home" *ngIf="!isUserLogged" class="logo">
+        <span>{{title}}</span>
+      </a>
+      <a routerLink="dashboard" *ngIf="isUserLogged" class="logo">
         <span>{{title}}</span>
       </a>
     </mat-toolbar-row>

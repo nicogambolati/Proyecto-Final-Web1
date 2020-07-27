@@ -1,3 +1,25 @@
 Hacer: 
 
-1- traer el apellido.
+
+2- 
+3- agregar texbox que permita agregar comentario ( crear un nuevo endpoint)
+4- Traer todos los comentarios con los Files
+
+Comentarios (3)
+Comentarios (1)
+
+File: 1
+- Comment 1
+- Comment 2
+- Comment 3
+
+ from files join comments 
+
+File 1. Comment 1.
+File 1. Comment 2.
+File 1. Comment 3.
+File 2. 
+
+for () {
+
+}

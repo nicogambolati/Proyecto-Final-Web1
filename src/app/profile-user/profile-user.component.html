@@ -1,0 +1,19 @@
+<div *ngFor="let file of files">
+    <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{file.name}} {{file.lastName}}</mat-card-title>
+           <mat-card-subtitle>{{file.createdDate}}</mat-card-subtitle> 
+        </mat-card-header>
+        <img mat-card-image src="{{ '/backend/' + file.url}}" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          <p>
+            {{ file.description }}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <span>LIKE ( {{file.likes}} )</span>
+          <button mat-button >BORRAR</button>
+        </mat-card-actions>
+      </mat-card>
+</div>

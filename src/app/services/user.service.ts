@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { UserModel } from '../models/user';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({   //hace que sea injectable para el injector de dependencia
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private authService: AuthenticationService) { }
 
   createUser (user: UserModel) {
     const httpOptions = {
@@ -47,6 +48,12 @@ export class UserService {
     };
 
     return this.http.post('/backend/disableUser.php', body, httpOptions);
+  }
+
+  getActiveUser(){
+    const userId = this.authService.getAuth();
+    return this.http.get("/backend/profileUser.php/?userId="+userId);
+
   }
 }
 

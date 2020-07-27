@@ -1,14 +1,16 @@
 <?php
-// required headers
 require_once('./utils/db.php');
 require_once('./utils/cors.php');
 enableCORS();
+
+$userId = $_GET["userId"];
 
 // Connected to DB
 $sql = "SELECT uploadedfiles.description, uploadedfiles.url, uploadedfiles.id, Usuarios.name,  uploadedfiles.createdDate, Usuarios.lastName, uploadedfiles.likes
     FROM uploadedfiles
     INNER JOIN Usuarios ON 
     uploadedfiles.userId = Usuarios.Id 
+    WHERE uploadedfiles.userId = $userId
     ORDER BY createdDate desc";
 
 // Traer los archivos del usuario activo.
