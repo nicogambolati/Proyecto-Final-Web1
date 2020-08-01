@@ -55,6 +55,12 @@ export class UserService {
     return this.http.get("/backend/profileUser.php/?userId="+userId);
 
   }
+
+  deleteUser (userID){
+    return this.http.get("/backend/deleteUser.php?userId="+userID);
+  }
+
+
 }
 
 

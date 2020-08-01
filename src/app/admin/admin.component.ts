@@ -31,6 +31,10 @@ export class AdminComponent implements OnInit {
   enableUser(id) {
     this.userService.changeUserActive(id, true).subscribe(() => this.refreshUsers());
   }
+
+  deleteUser(id){
+    this.userService.deleteUser(id).subscribe(() => this.refreshUsers());
+  }
 }
 
 export interface UserElement {
