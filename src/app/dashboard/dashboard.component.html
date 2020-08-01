@@ -5,7 +5,7 @@
           <mat-card-title>{{file.name}} {{file.lastName}}</mat-card-title>
           <mat-card-subtitle>{{file.createdDate}}</mat-card-subtitle> 
         </mat-card-header>
-        <img mat-card-image src="{{ '/backend/' + file.url}}" alt="Photo of a Shiba Inu">
+        <img mat-card-image src="{{ '/backend/' + file.url }}" alt="Photo of a Shiba Inu">
         <mat-card-content>
           <p>
             {{ file.description }}
@@ -15,12 +15,10 @@
           <button mat-button (click)="likesCont(file)">LIKE ( {{file.likes}} )</button>
         </mat-card-actions>
         <mat-card-footer>
-
-            <!-- <div [formGroupName]="i">
-              <input type="text" formControlName="comment"  name="description" />
-              <button (click)="sendComment(file)">Enviar</button>
-            </div> -->
-          
+          <form (ngSubmit)="sendComment(file)" [formGroup]="commentsForm" >
+            <input type="text" formControlName="comment" name="comment" />
+            <button>Enviar</button>
+          </form>
         </mat-card-footer> 
       </mat-card>
 </div>

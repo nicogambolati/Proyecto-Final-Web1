@@ -14,7 +14,6 @@ export class DashboardService {
   }
 
   updateLikes (fileId){
-      
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -23,5 +22,16 @@ export class DashboardService {
     };
 
     return this.http.post('/backend/buttonLikes.php', {id : fileId}, httpOptions);
+  }
+
+  sendComment(fileId, comment) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin':'*',
+      })
+    };
+
+    return this.http.post('/backend/addComment.php', {id : fileId, comment}, httpOptions);
   }
 }
