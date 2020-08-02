@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { loginModel } from '../models/login';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DashboardService {
 
-  constructor(private http:HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private authService: AuthenticationService) { }
 
   getUploadFiles () {
     return this.http.get('/backend/getFile.php');
@@ -32,6 +35,8 @@ export class DashboardService {
       })
     };
 
-    return this.http.post('/backend/addComment.php', {id : fileId, comment}, httpOptions);
+    const userId = this.authService.getAuth();
+
+    return this.http.post('/backend/addComment.php', {id : fileId, comment, userId}, httpOptions);
   }
 }
