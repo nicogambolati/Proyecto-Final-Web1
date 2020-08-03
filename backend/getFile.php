@@ -5,12 +5,24 @@ require_once('./utils/cors.php');
 enableCORS();
 
 // Connected to DB
-$sql = "SELECT uploadedfiles.description, uploadedfiles.url, uploadedfiles.id, Usuarios.name,  uploadedfiles.createdDate, Usuarios.lastName, uploadedfiles.likes, uploadedfilescomments.comment
+$sql = "SELECT 
+        uploadedfiles.id, 
+        uploadedfiles.description, 
+        uploadedfiles.url,
+        uploadedfiles.createdDate, 
+        uploadedfiles.likes, 
+        Usuarios.name, 
+        Usuarios.lastName, 
+        uploadedfilescomments.comment,
+        CommentUser.name as CommentUserName,
+        CommentUser.lastName as CommentUserLastName
     FROM uploadedfiles
     INNER JOIN Usuarios ON 
     uploadedfiles.userId = Usuarios.Id 
     LEFT JOIN uploadedfilescomments ON 
     uploadedfilescomments.fileId = uploadedfiles.id 
+    LEFT JOIN Usuarios CommentUser ON 
+    uploadedfilescomments.userId = CommentUser.Id
     ORDER BY uploadedfiles.createdDate desc";
 
 // Traer los archivos del usuario activo.
@@ -23,46 +35,40 @@ if ($results) { // si realizo la consulta
     $file = array();
 
     while($r = mysqli_fetch_assoc($results)) { // recorre todos los resultados de la consulta
-        // var_dump($r);
-
         if ($fileId !== $r['id']) {
             // Cambie de archivo.
 
             // Agrego el dato al output.
-            $rows[] = $r; // guarda la fila en un array
+            if ($fileId !== 0) {
+                $file['comments'] = $comments;
+                $rows[] = $file; // guarda la fila en un array
+            }
 
             $fileId = $r['id'];
-
-/* aray(8) {
-  ["description"]=>
-  string(11) "pepepepeppe"
-  ["url"]=>
-  string(27) "uploads/188057-img_7324.jpg"
-  ["id"]=>
-  string(2) "19"
-  ["name"]=>
-  string(7) "Nicolas"
-  ["createdDate"]=>
-  string(19) "2020-08-02 02:34:13"
-  ["lastName"]=>
-  string(9) "Gambolati"
-  ["likes"]=>
-  string(1) "4"
-  ["comment"]=>
-  string(18) "BUENAAAAARDOOO !!!"
-} */
-
+            $comments = array();
             $file = array(
                 ['id'] => $r['id'],
-
+                ['description'] => $r['description'],
+                ['url'] => $r['url'],
+                ['name'] => $r['name'],
+                ['createdDate'] => $r['createdDate'],
+                ['lastName'] => $r['lastName'],
+                ['likes'] => $r['likes'],
+                ['comments'] => $comments
             );
-
         }
 
-        // Si tengo comentarios.
-
-        // $rows[] = $r; // guarda la fila en un array
+        // Si tengo comentarios, lo agrego al array.
+        if ($r['comment']) {
+            array_push($comments, array(
+                'comment' => $r['comment'],
+                'name' => $r['CommentUserName'],
+                'lastName' => $r['CommentUserLastName'],
+                // TODO: Agregar fecha
+            ));
+        }
     }
+
     http_response_code(201);
     print json_encode($rows);
     
