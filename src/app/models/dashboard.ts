@@ -1,3 +1,5 @@
+import { CommentModel } from './comments';
+
 export class DashboardModel {
     id: Number;
     description: string;
@@ -6,5 +8,6 @@ export class DashboardModel {
     lastName: string;
     createdDate : Date;
     newComment: String;
-    likes: Number
+    likes: Number;
+    comments: CommentModel[];
 }
