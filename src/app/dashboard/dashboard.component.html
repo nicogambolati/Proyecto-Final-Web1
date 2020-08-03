@@ -18,7 +18,7 @@
           </button>
         </mat-card-actions>
         <mat-card-footer>
-          <div *ngFor="let comment of file.comment" class="comment">
+          <div *ngFor="let comment of file.comments" class="comment">
             <p>{{ comment.comment }}</p>
             <span>{{ comment.name }} {{ comment.lastName }}</span>
           </div>

@@ -47,14 +47,14 @@ if ($results) { // si realizo la consulta
             $fileId = $r['id'];
             $comments = array();
             $file = array(
-                ['id'] => $r['id'],
-                ['description'] => $r['description'],
-                ['url'] => $r['url'],
-                ['name'] => $r['name'],
-                ['createdDate'] => $r['createdDate'],
-                ['lastName'] => $r['lastName'],
-                ['likes'] => $r['likes'],
-                ['comments'] => $comments
+                'id' => $r['id'],
+                'description' => $r['description'],
+                'url' => $r['url'],
+                'name' => $r['name'],
+                'createdDate' => $r['createdDate'],
+                'lastName' => $r['lastName'],
+                'likes' => $r['likes'],
+                'comments' => $comments
             );
         }
 
@@ -68,6 +68,10 @@ if ($results) { // si realizo la consulta
             ));
         }
     }
+
+    // Agrega la ultima fila.
+    $file['comments'] = $comments;
+    $rows[] = $file; // guarda la fila en un array
 
     http_response_code(201);
     print json_encode($rows);
