@@ -10,9 +10,10 @@ import { AuthenticationService } from './services/authentication.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'XDXDXD';
+  title = 'PICCLUB';
   pageTitle = '';
   isUserLogged: boolean;
+
 
   constructor (
     private router: Router,

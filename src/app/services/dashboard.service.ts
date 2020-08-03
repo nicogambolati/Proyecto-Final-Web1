@@ -37,6 +37,6 @@ export class DashboardService {
 
     const userId = this.authService.getAuth();
 
-    return this.http.post('/backend/addComment.php', {id : fileId, comment, userId}, httpOptions);
+    return this.http.post('/backend/addComment.php', {fileId, comment, userId}, httpOptions);
   }
 }

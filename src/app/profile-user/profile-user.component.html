@@ -13,7 +13,10 @@
         </mat-card-content>
         <mat-card-actions>
           <span>LIKE ( {{file.likes}} )</span>
-          <button mat-button (click)="deleteButton(file.id)">BORRAR</button>
+          <button  mat-mini-fab color="warn" (click)="deleteButton(file.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+         
         </mat-card-actions>
       </mat-card>
 </div>

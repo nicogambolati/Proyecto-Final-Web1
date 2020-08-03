@@ -12,7 +12,10 @@
           </p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button (click)="likesCont(file)">LIKE ( {{file.likes}} )</button>
+          <button mat-icon-button color="primary" mat-button (click)="likesCont(file)">
+            <mat-icon>favorite </mat-icon>
+            ( {{file.likes}} )
+          </button>
         </mat-card-actions>
         <mat-card-footer>
           <form (ngSubmit)="sendComment(file)" [formGroup]="commentsForm" >

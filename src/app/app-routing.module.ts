@@ -44,7 +44,7 @@ const routes: Routes = [
   {
     path:"admin",
     data: {
-      title: "Administrador"
+      title: "Panel de Administrador"
     },
     component: AdminComponent,
     canActivate: [LoggedUserGuard] // Needs to check if user is Adminstrator.

@@ -28,10 +28,11 @@ export class DashboardComponent implements OnInit {
   }
 
   sendComment(file: DashboardModel) {
+    console.log(file);
     this.dashboardService.sendComment(file.id, this.commentsForm.value.comment).subscribe(() => console.log("Comentario enviado."));
   }
 
-  likesCont(file){
+  likesCont(file) {
     this.dashboardService.updateLikes(file.id).subscribe(()=>file.likes++);
   }
 }

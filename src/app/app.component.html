@@ -309,6 +309,12 @@
         <span>Login</span>
         </button>
       </a>
+      <a routerLink="/admin" *ngIf="isUserLogged" >
+        <button mat-menu-item >
+          <mat-icon>input</mat-icon>
+          <span>Administrador</span>
+        </button>
+      </a>
 
         <a routerLink="/upload" *ngIf="isUserLogged">
           <button mat-menu-item >

@@ -6,8 +6,12 @@ enableCORS();
 $fileID = $_GET['fileId'];
 
 if (is_numeric($fileID)) {
-    $sql = "DELETE FROM uploadedfiles WHERE uploadedfiles.id = $fileID";
+    // Borro los comentarios del archivo.
+    $sql = "DELETE from uploadedfilescomments WHERE fileId = $fileID;";
+    $results = executeQuery($sql);
 
+    // Borro el archivo.
+    $sql = "DELETE FROM uploadedfiles WHERE uploadedfiles.id = $fileID";
     $results = executeQuery($sql); // guardo el resultado de la consulta en un variable
 
     http_response_code(400);
