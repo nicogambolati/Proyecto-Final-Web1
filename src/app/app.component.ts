@@ -12,8 +12,8 @@ import { AuthenticationService } from './services/authentication.service';
 export class AppComponent {
   title = 'PICCLUB';
   pageTitle = '';
-  isUserLogged: boolean;
-
+  isUserLogged: Boolean;
+  isUserAdmin: Boolean;
 
   constructor (
     private router: Router,
@@ -26,6 +26,7 @@ export class AppComponent {
         this.pageTitle = route.data.title || '';
 
         this.isUserLogged = !!this.authService.getAuth();
+        this.isUserAdmin = this.authService.isActiveUserAdmin();
       }
     });
   }
@@ -38,6 +39,7 @@ export class AppComponent {
     .subscribe((accepted: Boolean) => {
       if (accepted) {
         this.authService.deleteAuth();
+        this.authService.deleteIsAdmin();
         this.router.navigate(['/login']);
       }
     });

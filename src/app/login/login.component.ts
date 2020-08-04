@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
       this.loginService.loginUser(login).subscribe(response => {
         const user = (response as Loggeduser);
         this.authService.setAuth(user.userId.toString());
+        this.authService.setIsAdmin(user.isAdmin);
         
         this.router.navigate(["/dashboard"]);
       });
@@ -54,5 +55,6 @@ export class LoginComponent implements OnInit {
 
 interface Loggeduser {
   userId: Number,
-  fullName: String
+  fullName: String,
+  isAdmin: string
 }

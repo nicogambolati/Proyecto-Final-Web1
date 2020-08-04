@@ -13,11 +13,11 @@ if (!empty($data->fileId) && !empty($data->comment) && !empty($data->userId)) {
 
     if (executeQuery($sql) === TRUE) {
         http_response_code(201);
-        echo json_encode(array("message" => "User added."));
+        echo json_encode(array("message" => "Comment added."));
     } else {
         echo $sql;
         http_response_code(400);
-        echo json_encode(array("message" => "User didn't add."));
+        echo json_encode(array("message" => "Comment didn't add."));
     }
 } else {
     http_response_code(400);

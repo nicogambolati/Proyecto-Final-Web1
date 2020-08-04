@@ -21,7 +21,8 @@ if (!empty($data->email) && !empty($data->password)){
         echo json_encode(array(
             "message" => "Log in success: " . $results->num_rows,
             "userId" => $row["id"],
-            "fullName" => $row["name"] // . ' ' . $row["lastname"]
+            "fullName" => $row["name"] , // . ' ' . $row["lastname"],
+            "isAdmin" => $row["isAdmin"]
         ));
     } else {
         http_response_code(400);

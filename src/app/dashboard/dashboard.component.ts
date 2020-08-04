@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(private dashboardService: DashboardService, private userService: UserService) { }
 
-  ngOnInit() {
+  refreshData() {
     this.dashboardService.getUploadFiles().subscribe(result => {
       this.files = (result as Object[]).map(file => {
         return (file as DashboardModel);
@@ -27,9 +27,16 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  ngOnInit() {
+    this.refreshData();
+  }
+
   sendComment(file: DashboardModel) {
-    console.log(file);
-    this.dashboardService.sendComment(file.id, this.commentsForm.value.comment).subscribe(() => console.log("Comentario enviado."));
+    this.dashboardService.sendComment(file.id, this.commentsForm.value.comment)
+      .subscribe(() => {
+        this.commentsForm.value.comment = "babu";
+        this.refreshData();
+      });
   }
 
   likesCont(file) {

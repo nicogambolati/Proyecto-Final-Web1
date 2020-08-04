@@ -8,6 +8,7 @@ import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
 import { LoggedUserGuard } from './guards/logged-user.guard';
 import { ProfileUserComponent } from './profile-user/profile-user.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 
 const routes: Routes = [
@@ -16,17 +17,17 @@ const routes: Routes = [
     data: {
       title: "Login"
     },
-    component:LoginComponent
+    component: LoginComponent
   },
   {
-    path:"create-user",
+    path: "create-user",
     data: {
       title: "Nuevo Usuario"
     },
     component: CreateUserComponent
   },
   {
-    path:"upload",
+    path: "upload",
     data: {
       title: "Subir Imagen"
     },
@@ -34,7 +35,7 @@ const routes: Routes = [
     canActivate: [LoggedUserGuard]
   },
   {
-    path:"dashboard",
+    path: "dashboard",
     data: {
       title: "Inicio"
     },
@@ -42,7 +43,7 @@ const routes: Routes = [
     canActivate: [LoggedUserGuard]
   },
   {
-    path:"admin",
+    path: "admin",
     data: {
       title: "Panel de Administrador"
     },
@@ -62,9 +63,17 @@ const routes: Routes = [
     data: {
       title: "Perfil de Usuario"
     },
-    component: ProfileUserComponent
+    component: ProfileUserComponent,
+    canActivate: [LoggedUserGuard]
+  },
+  {
+    path: 'searchResult',
+    data: {
+      title: "Resultados de Búsqueda"
+    },
+    component: SearchResultsComponent,
+    canActivate: [LoggedUserGuard]
   }
-
 ];
 
 @NgModule({

@@ -1,0 +1,27 @@
+.example-card {
+    max-width: 50%;
+    margin: auto;
+    margin-top: 50px;
+  
+    form {
+      max-width: 100%;
+      display: flex;
+      flex-flow: column;
+      align-items: flex-end;
+    }
+  }
+    
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+  
+  .example-button-row button,
+  .example-button-row a {
+    margin-right: 8px;
+  }
+  
+  .newcomment-form {
+    padding-top: 20px;
+    width: 100%;
+  }

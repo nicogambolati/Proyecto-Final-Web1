@@ -28,6 +28,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ProfileUserComponent } from './profile-user/profile-user.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ProfileUserComponent } from './profile-user/profile-user.component';
     HomeComponent,
     ConfirmDialogComponent,
     ProfileUserComponent,
+    SearchResultsComponent,
   ],
   imports: [
     BrowserModule,

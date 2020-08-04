@@ -29,6 +29,7 @@ $sql = "SELECT
 $results = executeQuery($sql); // guardo el resultado de la consulta en un variable
 
 $fileId = 0;
+$comments = array();
 
 if ($results) { // si realizo la consulta 
     $rows = array();
