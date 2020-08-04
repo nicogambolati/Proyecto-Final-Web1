@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, RoutesRecognized } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { AuthenticationService } from './services/authentication.service';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,8 @@ export class AppComponent {
   pageTitle = '';
   isUserLogged: Boolean;
   isUserAdmin: Boolean;
+
+  searchFormControl = new FormControl('', Validators.required);
 
   constructor (
     private router: Router,
@@ -45,4 +48,14 @@ export class AppComponent {
     });
   }
 
+  search() {
+    console.log(this.searchFormControl.value);
+    this.router.navigateByUrl('/searchResult?q=' + this.searchFormControl.value);
+  }
+
+  searchOnEnter(event: KeyboardEvent) {
+    if (event.code === 'NumpadEnter' || event.code === 'Enter') {
+      this.search();
+    }
+  }
 }

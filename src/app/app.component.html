@@ -335,13 +335,22 @@
         </button>
       </mat-menu>
 
-      
       <a routerLink="home" *ngIf="!isUserLogged" class="logo">
         <span>{{title}}</span>
       </a>
       <a routerLink="dashboard" *ngIf="isUserLogged" class="logo">
         <span>{{title}}</span>
       </a>
+
+      <span class="example-spacer"></span>
+      
+      <mat-form-field class="example-full-width">
+        <mat-label>Buscar</mat-label>
+        <input matInput [formControl]="searchFormControl" (keypress)="searchOnEnter($event)" placeholder="Buscar por...">
+      </mat-form-field>
+      <button mat-icon-button class="example-icon" (click)="search()" aria-label="Example icon-button with search icon">
+        <mat-icon>search</mat-icon>
+      </button>
     </mat-toolbar-row>
 
     <mat-toolbar-row *ngIf="pageTitle">
