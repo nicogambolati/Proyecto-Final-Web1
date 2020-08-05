@@ -16,7 +16,7 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
     {
       comment: new FormControl("", Validators.required),
     });
-
+  searchTerm: string;
   navigationSubscription;
 
   constructor(
@@ -33,7 +33,8 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
   }
 
   refreshData() {
-    this.searchResult.search(this.activeRoute.snapshot.queryParams["q"])
+    this.searchTerm = this.activeRoute.snapshot.queryParams["q"];
+    this.searchResult.search(this.searchTerm)
       .subscribe(result => {
         this.files = (result as Object[]).map(file => {
           return (file as DashboardModel);
