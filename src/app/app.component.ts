@@ -52,8 +52,11 @@ export class AppComponent {
   }
 
   search() {
-    console.log(this.searchFormControl.value);
-    this.router.navigateByUrl('/searchResult?q=' + this.searchFormControl.value);
+    if(this.searchFormControl.value){
+      this.router.navigateByUrl('/searchResult?q=' + this.searchFormControl.value);
+    }else {
+      this.router.navigateByUrl('/dashboard');
+    }
   }
 
   searchOnEnter(event: KeyboardEvent) {
