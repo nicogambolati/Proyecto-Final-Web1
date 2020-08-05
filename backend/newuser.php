@@ -8,8 +8,8 @@ $data = json_decode(file_get_contents("php://input"));
 
 // TODO: Validar los otros datos.
 if (!empty($data->name) && !empty($data->email) && !empty($data->password)) {
-    $sql = "INSERT INTO usuarios (name,lastName, email, password) 
-            VALUES ('$data->name','$data->lastName', '$data->email', '$data->password')";
+    $sql = "INSERT INTO usuarios (name,lastName, email, password, IsAdmin) 
+            VALUES ('$data->name','$data->lastName', '$data->email', '$data->password', 0)";
 
     if (executeQuery($sql) === TRUE) {
         http_response_code(201);

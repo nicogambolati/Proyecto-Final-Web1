@@ -27,13 +27,12 @@ if ($_FILES['file'] && $_POST["description"] && $_POST["userId"]) {
         $upload_name = $upload_dir.strtolower($random_name);
         $upload_name = preg_replace('/\s+/', '-', $upload_name);
     
-        if(move_uploaded_file($file_tmp_name , $upload_name)) {
-
+        if (move_uploaded_file($file_tmp_name , $upload_name)) {
             $userId = $_POST["userId"];
             $description = $_POST["description"];
 
-            $sql = "INSERT INTO uploadedfiles (userId, url, description)
-                VALUES ($userId, '$upload_name', '$description')";
+            $sql = "INSERT INTO uploadedfiles (userId, url, description, likes)
+                    VALUES ($userId, '$upload_name', '$description', 0)";
 
             if (executeQuery($sql) === TRUE) {
                 $response = array(
