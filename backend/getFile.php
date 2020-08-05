@@ -11,17 +11,17 @@ $sql = "SELECT
         uploadedfiles.url,
         uploadedfiles.createdDate, 
         uploadedfiles.likes, 
-        Usuarios.name, 
-        Usuarios.lastName, 
+        usuarios.name, 
+        usuarios.lastName, 
         uploadedfilescomments.comment,
         CommentUser.name as CommentUserName,
         CommentUser.lastName as CommentUserLastName
     FROM uploadedfiles
-    INNER JOIN Usuarios ON 
-    uploadedfiles.userId = Usuarios.Id 
+    INNER JOIN usuarios ON 
+    uploadedfiles.userId = usuarios.Id 
     LEFT JOIN uploadedfilescomments ON 
     uploadedfilescomments.fileId = uploadedfiles.id 
-    LEFT JOIN Usuarios CommentUser ON 
+    LEFT JOIN usuarios CommentUser ON 
     uploadedfilescomments.userId = CommentUser.Id
     ORDER BY uploadedfiles.createdDate desc";
 
@@ -71,9 +71,11 @@ if ($results) { // si realizo la consulta
     }
 
     // Agrega la ultima fila.
-    $file['comments'] = $comments;
-    $rows[] = $file; // guarda la fila en un array
-
+    if (!empty($file)) {
+        $file['comments'] = $comments;
+        $rows[] = $file; // guarda la fila en un array
+    }
+    
     http_response_code(201);
     print json_encode($rows);
     

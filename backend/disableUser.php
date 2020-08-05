@@ -9,7 +9,7 @@ $data = json_decode(file_get_contents("php://input"));
 
 if (!empty($data->userId)) {
     // Connected to DB
-    $sql = "UPDATE USUARIOS SET
+    $sql = "UPDATE usuarios SET
             isActive = $data->isActive
             WHERE id = $data->userId" ; 
 

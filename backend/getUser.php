@@ -5,8 +5,7 @@ require_once('./utils/cors.php');
 enableCORS();
 
 // Connected to DB
-$sql = "SELECT *
-        FROM USUARIOS" ; 
+$sql = "SELECT * FROM usuarios" ; 
 
 $results = executeQuery($sql); // guardo el resultado de la consulta en un variable
 

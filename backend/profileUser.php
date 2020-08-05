@@ -6,10 +6,10 @@ enableCORS();
 $userId = $_GET["userId"];
 
 // Connected to DB
-$sql = "SELECT uploadedfiles.description, uploadedfiles.url, uploadedfiles.id, Usuarios.name,  uploadedfiles.createdDate, Usuarios.lastName, uploadedfiles.likes
+$sql = "SELECT uploadedfiles.description, uploadedfiles.url, uploadedfiles.id, usuarios.name,  uploadedfiles.createdDate, usuarios.lastName, uploadedfiles.likes
     FROM uploadedfiles
-    INNER JOIN Usuarios ON 
-    uploadedfiles.userId = Usuarios.Id 
+    INNER JOIN usuarios ON 
+    uploadedfiles.userId = usuarios.Id 
     WHERE uploadedfiles.userId = $userId
     ORDER BY createdDate desc";
 

@@ -32,7 +32,7 @@ if ($_FILES['file'] && $_POST["description"] && $_POST["userId"]) {
             $userId = $_POST["userId"];
             $description = $_POST["description"];
 
-            $sql = "INSERT INTO UploadedFiles (userId, url, description)
+            $sql = "INSERT INTO uploadedfiles (userId, url, description)
                 VALUES ($userId, '$upload_name', '$description')";
 
             if (executeQuery($sql) === TRUE) {
