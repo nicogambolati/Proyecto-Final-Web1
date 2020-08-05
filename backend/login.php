@@ -21,16 +21,15 @@ if (!empty($data->email) && !empty($data->password)){
         echo json_encode(array(
             "message" => "Log in success: " . $results->num_rows,
             "userId" => $row["id"],
-            "fullName" => $row["name"] , // . ' ' . $row["lastname"],
+            "fullName" => $row["name"], // . ' ' . $row["lastname"],
             "isAdmin" => $row["isAdmin"]
         ));
     } else {
         http_response_code(400);
-        echo json_encode(array("message" => "Log in failed: " /*. $results->num_rows*/));
+        echo json_encode(array("message" => "Error al iniciar sesion. Por favor, revisa los datos ingresados."));
     }
 } else {
     http_response_code(400);
-
     echo json_encode(array("message" => "Please provide user email and password."));
 }
 

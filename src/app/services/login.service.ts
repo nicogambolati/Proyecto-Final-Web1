@@ -10,8 +10,6 @@ export class LoginService {
   constructor(private http:HttpClient) { }
 
   loginUser (user:loginModel) {
-    console.log(user);
-
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -19,6 +17,6 @@ export class LoginService {
       })
     };
 
-    return this.http.post('/backend/login.php',user,httpOptions);
+    return this.http.post('/backend/login.php', user, httpOptions);
   }
 }

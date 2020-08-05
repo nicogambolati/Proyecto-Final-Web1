@@ -1,4 +1,9 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="loginUserForm" class="login-form center-content">
+  <mat-error *ngIf="errorMessage">
+    <b>Error: </b>
+    <span>{{ errorMessage }}</span>
+  </mat-error>
+
   <mat-form-field appearance="outline" class="full-width">
     <mat-label>Email</mat-label>
     <input 

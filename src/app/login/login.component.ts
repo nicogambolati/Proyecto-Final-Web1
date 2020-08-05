@@ -11,12 +11,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
   loginUserForm = new FormGroup(
     {
       email: new FormControl("", [Validators.required,Validators.email]),
       password: new FormControl("", [Validators.required,Validators.minLength(3)])
     });
+  
+  errorMessage: String;
 
   constructor(
     private loginService: LoginService,
@@ -24,27 +25,31 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   onCancel() {
     this.router.navigate(["/home"]);
   }
 
   onSubmit() {
+    this.errorMessage = "";
     if (this.loginUserForm.invalid) {
       console.log("formulario es incorrecto");
     } else{
       const login = new loginModel()
       login.email = this.loginUserForm.value.email;
       login.password = this.loginUserForm.value.password;
-      
+
       this.loginService.loginUser(login).subscribe(response => {
+        console.log("Response: ", response);
         const user = (response as Loggeduser);
         this.authService.setAuth(user.userId.toString());
         this.authService.setIsAdmin(user.isAdmin);
         
         this.router.navigate(["/dashboard"]);
+      }, error => {
+        this.errorMessage = error.message;
+        console.error("My Error: ", this.errorMessage);
       });
     }
   }
