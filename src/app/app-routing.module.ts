@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { LoggedUserGuard } from './guards/logged-user.guard';
 import { ProfileUserComponent } from './profile-user/profile-user.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
+import { AdminUserGuard } from './guards/admin-user.guard';
 
 
 const routes: Routes = [
@@ -48,7 +49,7 @@ const routes: Routes = [
       title: "Panel de Administrador"
     },
     component: AdminComponent,
-    canActivate: [LoggedUserGuard] // Needs to check if user is Adminstrator.
+    canActivate: [LoggedUserGuard, AdminUserGuard]
   },
   {
     path: '',
@@ -77,7 +78,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: "reload" })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -34,22 +34,21 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.errorMessage = "";
     if (this.loginUserForm.invalid) {
-      console.log("formulario es incorrecto");
+      this.errorMessage = "Por favor, completa los datos.";
     } else{
       const login = new loginModel()
       login.email = this.loginUserForm.value.email;
       login.password = this.loginUserForm.value.password;
 
       this.loginService.loginUser(login).subscribe(response => {
-        console.log("Response: ", response);
         const user = (response as Loggeduser);
         this.authService.setAuth(user.userId.toString());
         this.authService.setIsAdmin(user.isAdmin);
+       
         
         this.router.navigate(["/dashboard"]);
       }, error => {
-        this.errorMessage = error.message;
-        console.error("My Error: ", this.errorMessage);
+        this.errorMessage = error.error.message;
       });
     }
   }
@@ -60,6 +59,6 @@ export class LoginComponent implements OnInit {
 
 interface Loggeduser {
   userId: Number,
-  fullName: String,
+  
   isAdmin: string
 }

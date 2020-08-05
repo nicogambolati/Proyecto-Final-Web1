@@ -15,6 +15,7 @@ export class AppComponent {
   pageTitle = '';
   isUserLogged: Boolean;
   isUserAdmin: Boolean;
+  
 
   searchFormControl = new FormControl('', Validators.required);
 
@@ -23,6 +24,7 @@ export class AppComponent {
     private dialog: MatDialog,
     private authService: AuthenticationService,
   ) { 
+    // Se ejecuta en cada ruta que el usuario visita.
     router.events.subscribe(event => {
       if (event instanceof RoutesRecognized) {
         const route = event.state.root.firstChild;
@@ -30,7 +32,8 @@ export class AppComponent {
 
         this.isUserLogged = !!this.authService.getAuth();
         this.isUserAdmin = this.authService.isActiveUserAdmin();
-      }
+        
+      } 
     });
   }
 

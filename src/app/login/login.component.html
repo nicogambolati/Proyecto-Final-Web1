@@ -1,6 +1,5 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="loginUserForm" class="login-form center-content">
   <mat-error *ngIf="errorMessage">
-    <b>Error: </b>
     <span>{{ errorMessage }}</span>
   </mat-error>
 

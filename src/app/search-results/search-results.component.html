@@ -1,40 +1,44 @@
+<div *ngIf="!files || files.length === 0" class="results-not-found">
+  <h2>No hay resultados para la busqueda solicitada.</h2>
+</div>
+
 <div *ngFor="let file of files">
-    <mat-card class="example-card">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>{{file.name}} {{file.lastName}}</mat-card-title>
-          <mat-card-subtitle>{{file.createdDate}}</mat-card-subtitle> 
-        </mat-card-header>
-        <img mat-card-image src="{{ '/backend/' + file.url }}" alt="Photo of a Shiba Inu">
-        <mat-card-content>
-          <p>
-            {{ file.description }}
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-icon-button color="primary" mat-button (click)="likesCont(file)">
-            <mat-icon>favorite </mat-icon>
-            ( {{file.likes}} )
-          </button>
-        </mat-card-actions>
-        <mat-card-footer>
-          <div *ngFor="let comment of file.comments" class="comment" >
-            <mat-card style="margin-top: 10px;"> 
-              <b style="font-size: medium;" >{{ comment.name }} {{ comment.lastName }}</b>
-              <p>{{ comment.comment }}</p>
-            </mat-card>
-          </div>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{file.name}} {{file.lastName}}</mat-card-title>
+      <mat-card-subtitle>{{file.createdDate}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{ '/backend/' + file.url }}" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+        {{ file.description }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-icon-button color="primary" mat-button (click)="likesCont(file)">
+        <mat-icon>favorite </mat-icon>
+        ( {{file.likes}} )
+      </button>
+    </mat-card-actions>
+    <mat-card-footer>
+      <div *ngFor="let comment of file.comments" class="comment">
+        <mat-card style="margin-top: 10px;">
+          <b style="font-size: medium;">{{ comment.name }} {{ comment.lastName }}</b>
+          <p>{{ comment.comment }}</p>
+        </mat-card>
+      </div>
 
-          <form (ngSubmit)="sendComment(file)" [formGroup]="commentsForm">
-            <!-- <input type="text" formControlName="comment" name="comment" /> -->
-            <mat-form-field appearance="fill" class="newcomment-form">
-                <mat-label>Comentario</mat-label>
-                <textarea matInput type="text"  formControlName="comment" name="comment" ></textarea>
-            </mat-form-field>
-            <button mat-raised-button color="primary">Enviar</button>
-          </form>
+      <form (ngSubmit)="sendComment(file)" [formGroup]="commentsForm">
+        <!-- <input type="text" formControlName="comment" name="comment" /> -->
+        <mat-form-field appearance="fill" class="newcomment-form">
+          <mat-label>Comentario</mat-label>
+          <textarea matInput type="text" formControlName="comment" name="comment"></textarea>
+        </mat-form-field>
+        <button mat-raised-button color="primary">Enviar</button>
+      </form>
 
-          
-        </mat-card-footer> 
-      </mat-card>
+
+    </mat-card-footer>
+  </mat-card>
 </div>

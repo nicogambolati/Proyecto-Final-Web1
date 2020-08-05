@@ -12,6 +12,8 @@ import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
 import { UploadComponent } from './upload/upload.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { ProfileUserComponent } from './profile-user/profile-user.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 // Material
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -27,8 +29,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ProfileUserComponent } from './profile-user/profile-user.component';
-import { SearchResultsComponent } from './search-results/search-results.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+
 
 @NgModule({
   declarations: [
@@ -63,7 +65,8 @@ import { SearchResultsComponent } from './search-results/search-results.componen
     MatMenuModule,
     MatSidenavModule,
     MatDividerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,30 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SearchResultService } from '../services/search-result.service';
 import { DashboardModel } from '../models/dashboard';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DashboardService } from '../services/dashboard.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-search-results',
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.scss']
 })
-export class SearchResultsComponent implements OnInit {
+export class SearchResultsComponent implements OnInit, OnDestroy {
   files: DashboardModel[];
   commentsForm = new FormGroup(
     {
       comment: new FormControl("", Validators.required),
     });
 
+  navigationSubscription;
+
   constructor(
     private searchResult: SearchResultService, 
     private dashboardService : DashboardService,
-    private route: ActivatedRoute
-  ) { }
+    private activeRoute: ActivatedRoute,
+    private router: Router, 
+  ) { 
+    this.navigationSubscription = this.router.events.subscribe((e: any) => {
+      if (e instanceof NavigationEnd) {
+        this.refreshData();
+      }
+    });
+  }
 
   refreshData() {
-    this.searchResult.search(this.route.snapshot.queryParams["q"])
+    this.searchResult.search(this.activeRoute.snapshot.queryParams["q"])
       .subscribe(result => {
         this.files = (result as Object[]).map(file => {
           return (file as DashboardModel);
@@ -34,6 +43,12 @@ export class SearchResultsComponent implements OnInit {
 
   ngOnInit() {
     this.refreshData();
+  }
+
+  ngOnDestroy() {
+    if (this.navigationSubscription) {
+      this.navigationSubscription.unsubscribe();
+    }
   }
 
   sendComment(file: DashboardModel) {
@@ -48,3 +63,5 @@ export class SearchResultsComponent implements OnInit {
   }
 
 }
+
+ 

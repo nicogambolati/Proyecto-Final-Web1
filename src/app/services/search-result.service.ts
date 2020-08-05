@@ -9,6 +9,7 @@ export class SearchResultService {
   constructor(private http:HttpClient) { }
 
   search (searchTerm: string) {
+    console.log(searchTerm);
     return this.http.get('/backend/search.php?q=' + searchTerm);
   }
 }

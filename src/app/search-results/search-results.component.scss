@@ -25,3 +25,11 @@
     padding-top: 20px;
     width: 100%;
   }
+
+  .results-not-found {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+  }
